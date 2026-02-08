@@ -1,0 +1,47 @@
+{
+  "BTC": {
+    "trend": "BEARISH",
+    "lastFlip": "BEARISH",
+    "inPosition": false
+  },
+  "SPY": {
+    "trend": "BULLISH",
+    "lastFlip": null,
+    "inPosition": false
+  },
+  "AAPL": {
+    "trend": "BULLISH",
+    "lastFlip": null,
+    "inPosition": false
+  },
+  "MSFT": {
+    "trend": "BEARISH",
+    "lastFlip": "BEARISH",
+    "inPosition": false
+  },
+  "NVDA": {
+    "trend": "BEARISH",
+    "lastFlip": null,
+    "inPosition": false
+  },
+  "GOOGL": {
+    "trend": "BULLISH",
+    "lastFlip": null,
+    "inPosition": false
+  },
+  "AMZN": {
+    "trend": "BEARISH",
+    "lastFlip": null,
+    "inPosition": false
+  },
+  "META": {
+    "trend": "BULLISH",
+    "lastFlip": null,
+    "inPosition": false
+  },
+  "TSLA": {
+    "trend": "BEARISH",
+    "lastFlip": null,
+    "inPosition": false
+  }
+}
