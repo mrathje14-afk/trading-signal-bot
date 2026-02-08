@@ -5,7 +5,7 @@ import { SYMBOLS, SymbolConfig } from "./config/symbols";
 import { fetchStock1dCandles } from "./data/yahoo";
 import "./telegram/commands";
 import { notify } from "./telegram/notify";
-import { sendWeeklySummary } from "./telegram/weeklySummary";
+
 
 
 // ---- State (CommonJS, safe) ----
@@ -96,12 +96,6 @@ async function main() {
   }
 
   saveState(state);
-
-    // 📅 Weekly summary (Sunday only)
-  const today = new Date().getUTCDay(); // 0 = Sunday
-  if (today === 0) {
-    await sendWeeklySummary();
-  }
 
 }
 
