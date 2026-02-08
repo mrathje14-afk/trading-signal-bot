@@ -20,7 +20,7 @@ export const SYMBOLS: SymbolConfig[] = [
   // 🔹 CRYPTO
   {
     key: "BTC",
-    symbol: "BTCUSDT",
+    symbol: "BTC-USD",
     market: "crypto",
     role: "signal"
   },

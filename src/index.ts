@@ -11,20 +11,6 @@ import { sendWeeklySummary } from "./telegram/weeklySummary";
 // ---- State (CommonJS, safe) ----
 const { loadState, saveState } = require("./state/stateStore");
 
-const BINANCE_URL = "https://api.binance.com/api/v3/klines";
-
-// ---------- Data fetchers ----------
-async function fetchCrypto1dCandles(symbol: string): Promise<number[]> {
-  const response = await axios.get(BINANCE_URL, {
-    params: {
-      symbol,
-      interval: "1d",
-      limit: 200
-    }
-  });
-
-  return response.data.map((k: any) => Number(k[4]));
-}
 
 // ---------- Helpers ----------
 function positionLabel(inPosition: boolean): "IN" | "OUT" {
@@ -41,11 +27,8 @@ async function processSymbol(
   let closes: number[];
 
   // 🔑 MARKET SEPARATION
-  if (config.market === "crypto") {
-    closes = await fetchCrypto1dCandles(config.symbol);
-  } else {
-    closes = await fetchStock1dCandles(config.symbol);
-  }
+ closes = await fetchStock1dCandles(config.symbol);
+
 
   const ema9 = calculateEMA(closes, 9);
   const ema50 = calculateEMA(closes, 50);
