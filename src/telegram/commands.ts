@@ -1,12 +1,18 @@
 import TelegramBot, { Message } from "node-telegram-bot-api";
 import { SYMBOLS } from "../config/symbols";
 
+// ---- Env ----
 const token = process.env.TELEGRAM_BOT_TOKEN;
 const chatId = process.env.TELEGRAM_CHAT_ID;
 
-// ---- State (CommonJS runtime-safe) ----
+// ---- State (CommonJS safe) ----
 const { loadState, saveState } = require("../state/stateStore");
 
+// ---- Command window config ----
+const COMMAND_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+const isGitHub = process.env.GITHUB_ACTIONS === "true";
+const enableCommandWindow =
+  isGitHub && process.env.ENABLE_COMMAND_WINDOW === "true";
 
 // ---- Types ----
 type SymbolState = {
@@ -28,9 +34,16 @@ function createEmptySymbolState(): SymbolState {
   };
 }
 
-// ---- Telegram Commands ----
-if (token && chatId) {
+// ---- Telegram Commands (TIME-BOXED) ----
+if (token && chatId && enableCommandWindow) {
   const bot = new TelegramBot(token, { polling: true });
+
+  console.log("🟢 Telegram command window opened (1 hour)");
+
+  bot.sendMessage(
+    chatId,
+    "🕒 Command window OPEN\nYou have 60 minutes to use /IN /OUT /STATUS"
+  );
 
   bot.on("message", (msg: Message) => {
     if (msg.chat.id.toString() !== chatId) return;
@@ -73,22 +86,29 @@ if (token && chatId) {
     }
 
     // /STATUS
-if (command === "/STATUS") {
-  const lines = Object.entries(state)
-    .map(([k, v]) => {
-      const s = v as SymbolState;
-      return `${k}: ${s.inPosition ? "IN" : "OUT"}`;
-    })
-    .join("\n");
+    if (command === "/STATUS") {
+      const lines = Object.entries(state)
+        .map(([k, v]) => {
+          const s = v as SymbolState;
+          return `${k}: ${s.inPosition ? "IN" : "OUT"}`;
+        })
+        .join("\n");
 
-  bot.sendMessage(
-    chatId,
-    `📊 Position Status:\n\n${lines || "No positions tracked"}`
-  );
-  return;
-}
-
+      bot.sendMessage(
+        chatId,
+        `📊 Position Status:\n\n${lines || "No positions tracked"}`
+      );
+      return;
+    }
   });
+
+  // ---- Auto shutdown ----
+  setTimeout(() => {
+    console.log("🔴 Telegram command window closed");
+    bot.stopPolling();
+    process.exit(0);
+  }, COMMAND_WINDOW_MS);
+
 } else {
-  console.log("Telegram commands disabled (missing env vars)");
+  console.log("Telegram commands disabled (no command window)");
 }

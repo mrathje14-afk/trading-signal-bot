@@ -2,7 +2,7 @@ name: Daily Trading Signal Bot
 
 on:
   schedule:
-    - cron: "0 0 * * *"   # daily (adjust if needed)
+    - cron: "0 0 * * *"   # daily
   workflow_dispatch:
 
 jobs:
@@ -26,7 +26,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: "8487286204:AAE8lTujI3uGWA5kiFuTbIDqXuFmr3JhxHc"
           TELEGRAM_CHAT_ID: "8073791822"
-
+          ENABLE_COMMAND_WINDOW: "true"
 
       - name: Commit updated state.json
         run: |
