@@ -2,7 +2,7 @@ name: Weekly Summary
 
 on:
   schedule:
-    - cron: "0 18 * * 5"   # Friday 22:00 UTC
+    - cron: "0 17 * * 5"   # Friday 22:00 UTC
 
 jobs:
   run-weekly:
