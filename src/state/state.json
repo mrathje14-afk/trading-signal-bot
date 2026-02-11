@@ -20,8 +20,8 @@
     "inPosition": false
   },
   "NVDA": {
-    "trend": "BEARISH",
-    "lastFlip": null,
+    "trend": "BULLISH",
+    "lastFlip": "BULLISH",
     "inPosition": false
   },
   "GOOGL": {
