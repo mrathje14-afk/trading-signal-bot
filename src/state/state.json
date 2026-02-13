@@ -12,7 +12,7 @@
   "AAPL": {
     "trend": "BULLISH",
     "lastFlip": null,
-    "inPosition": false
+    "inPosition": true
   },
   "MSFT": {
     "trend": "BEARISH",
