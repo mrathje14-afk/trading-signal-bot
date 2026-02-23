@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: 22
       - run: npm ci
-      - run: npm start
+      - run: npx ts-node src/telegram/weeklySummary.ts
         env:
           TELEGRAM_BOT_TOKEN: "8487286204:AAE8lTujI3uGWA5kiFuTbIDqXuFmr3JhxHc"
           TELEGRAM_CHAT_ID: "8073791822"
