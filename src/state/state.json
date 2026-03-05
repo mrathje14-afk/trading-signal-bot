@@ -5,8 +5,8 @@
     "inPosition": false
   },
   "SPY": {
-    "trend": "BULLISH",
-    "lastFlip": null,
+    "trend": "BEARISH",
+    "lastFlip": "BEARISH",
     "inPosition": false
   },
   "AAPL": {
