@@ -30,8 +30,8 @@
     "inPosition": false
   },
   "AMZN": {
-    "trend": "BEARISH",
-    "lastFlip": null,
+    "trend": "BULLISH",
+    "lastFlip": "BULLISH",
     "inPosition": false
   },
   "META": {
