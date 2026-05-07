@@ -40,8 +40,8 @@
     "inPosition": false
   },
   "TSLA": {
-    "trend": "BEARISH",
-    "lastFlip": null,
+    "trend": "BULLISH",
+    "lastFlip": "BULLISH",
     "inPosition": false
   }
 }
