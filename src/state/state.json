@@ -30,8 +30,8 @@
     "inPosition": false
   },
   "AMZN": {
-    "trend": "BULLISH",
-    "lastFlip": "BULLISH",
+    "trend": "BEARISH",
+    "lastFlip": "BEARISH",
     "inPosition": false
   },
   "META": {
@@ -40,8 +40,8 @@
     "inPosition": false
   },
   "TSLA": {
-    "trend": "BULLISH",
-    "lastFlip": "BULLISH",
+    "trend": "BEARISH",
+    "lastFlip": "BEARISH",
     "inPosition": false
   }
 }
