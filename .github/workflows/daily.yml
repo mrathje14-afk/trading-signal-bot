@@ -26,9 +26,9 @@ jobs:
       - name: Run trading signal bot
         run: npm start
         env:
-          TELEGRAM_BOT_TOKEN: "8487286204:AAE8lTujI3uGWA5kiFuTbIDqXuFmr3JhxHc"
-          TELEGRAM_CHAT_ID: "8073791822"
-          ENABLE_COMMAND_WINDOW: "true"
+            TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+            TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+            ENABLE_COMMAND_WINDOW: "true"
 
       - name: Commit updated state.json
         continue-on-error: true
